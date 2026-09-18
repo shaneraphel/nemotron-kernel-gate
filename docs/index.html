@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Nemotron kernel gate</title>
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;margin:2rem;max-width:48rem}pre{background:#111;color:#eee;padding:1rem}</style>
+</head>
+<body>
+  <h1>Nemotron kernel gate</h1>
+  <p>Integer kernels must match exactly. Continuous kernels still use a relative tolerance. The live path calls a Nemotron model on Nebius Token Factory; this page shows the accept gate on fixture tensors.</p>
+  <pre id="out"></pre>
+  <script>
+    function accept(candidate, reference, integer) {
+      if (integer) return candidate.every((v, i) => v === reference[i]);
+      return candidate.every((v, i) => Math.abs(v - reference[i]) < 1e-3);
+    }
+    const rows = [
+      ["int equal", accept([1,2],[1,2], true)],
+      ["int miss", accept([1,2],[1,3], true)],
+      ["float close", accept([1.0],[1.0000001], false)],
+    ];
+    document.getElementById("out").textContent = rows.map(r => r[0] + ": " + r[1]).join("\n");
+  </script>
+</body>
+</html>

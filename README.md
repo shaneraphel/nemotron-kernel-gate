@@ -9,3 +9,7 @@ export NEBIUS_API_KEY=...
 export NEBIUS_BASE_URL=https://api.tokenfactory.nebius.com/v1
 python -m nemotron_kernel.gate
 ```
+
+## Demo
+
+https://shaneraphel.github.io/nemotron-kernel-gate/
